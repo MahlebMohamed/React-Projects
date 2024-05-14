@@ -36,17 +36,21 @@ const questions = [
 
 export default function FlashCards() {
     const [indexQuestionClick, setIndexQuestionClick] = useState(-1);
-    const [questionId, setQuestionId] = useState(0);
+    // const [questionId, setQuestionId] = useState(0);
 
     function handleClick(index) {
-        setIndexQuestionClick(index);
-
-        if (questionId === questions[index].id) {
+        if (index === indexQuestionClick) {
             setIndexQuestionClick(-1);
-            setQuestionId(0)
         } else {
-            setQuestionId(questions[index].id);
+            setIndexQuestionClick(index);
         }
+
+        // if (questionId === questions[index].id) {
+        //     setIndexQuestionClick(-1);
+        //     setQuestionId(0)
+        // } else {
+        //     setQuestionId(questions[index].id);
+        // }
     }
 
 
