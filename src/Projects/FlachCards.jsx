@@ -39,11 +39,7 @@ export default function FlashCards() {
     // const [questionId, setQuestionId] = useState(0);
 
     function handleClick(index) {
-        if (index === indexQuestionClick) {
-            setIndexQuestionClick(-1);
-        } else {
-            setIndexQuestionClick(index);
-        }
+        setIndexQuestionClick(index === indexQuestionClick ? -1 : index);
 
         // if (questionId === questions[index].id) {
         //     setIndexQuestionClick(-1);
@@ -56,14 +52,14 @@ export default function FlashCards() {
 
     return <div className="flashcards">
         {
-            questions.map((item, index) => {
+            questions.map((item) => {
                 return (
                     <div
                         key={item.id}
-                        onClick={() => handleClick(index)}
-                        style={index === indexQuestionClick ? { backgroundColor: 'red', color: 'white' } : {}}
+                        onClick={() => handleClick(item.id)}
+                        style={item.id === indexQuestionClick ? { backgroundColor: 'red', color: 'white' } : {}}
                     >
-                        {index === indexQuestionClick ? item.answer : item.question}
+                        {item.id === indexQuestionClick ? item.answer : item.question}
                     </div>
                 )
             })

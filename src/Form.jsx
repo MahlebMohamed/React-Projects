@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function Form({ initialItems, setInitialItems }) {
+export default function Form({ onAddItems }) {
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState(1);
 
@@ -11,9 +11,9 @@ export default function Form({ initialItems, setInitialItems }) {
         if (!description)
             return;
 
-        const initialItemsCopie = [...initialItems]
-        initialItemsCopie.push({ id: Date.now(), description, quantity, packed: false })
-        setInitialItems(initialItemsCopie);
+        const newItem = { id: Date.now(), description, quantity, packed: false }
+        console.log(newItem);
+        onAddItems(newItem);
 
         setDescription('');
         setQuantity(1);
